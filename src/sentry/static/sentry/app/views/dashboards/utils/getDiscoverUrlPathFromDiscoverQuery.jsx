@@ -38,3 +38,20 @@ export function getDiscoverUrlPathFromDiscoverQuery({organization, selection, qu
     limit: 1000,
   })}&visualization=${visual}`;
 }
+
+export function getDiscover2UrlPathFromDiscoverQuery({organization, selection, query}) {
+  console.log(organization);
+  console.log(selection);
+  console.log('query', query);
+
+  const newQuery = {
+    name: query.name,
+    field: [...query.fields, 'count()'],
+    sort: query.orderby,
+    statsPeriod: selection?.datetime?.period,
+  };
+
+  console.log('newQuery', newQuery);
+
+  return '';
+}
